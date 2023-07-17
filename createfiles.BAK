@@ -1204,7 +1204,7 @@ use
 delete file E:\SQL_File_Loads\cldentch_full.txt
 ? "Start  cldentchload"
 use cldentch
-COPY TO E:\SQL_File_Loads\_cldentch_full.txt DELIMITED WITH CHAR "~"
+COPY TO E:\SQL_File_Loads\cldentch_full.txt DELIMITED WITH CHAR "~"
 ? "Finished cldentch"
 use
 

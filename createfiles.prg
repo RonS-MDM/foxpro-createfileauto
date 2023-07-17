@@ -1209,6 +1209,15 @@ COPY TO E:\SQL_File_Loads\cldentch_full.txt DELIMITED WITH CHAR "~"
 use
 
 
+delete file E:\SQL_File_Loads\classden_full.txt
+? "Start  classden load"
+use classden
+COPY TO E:\SQL_File_Loads\classden_full.txt DELIMITED WITH CHAR "~"
+? "Finished classden"
+use
+
+
+
 
 
 
