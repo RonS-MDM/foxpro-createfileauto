@@ -175,49 +175,6 @@ set default to "E:\MDM\MainTest\Data\"
 
 SYS(3050, 1, MIN(536870912, VAL(SYS(3050, 1, 0))))
 
-delete file EDITrans_InBound.dbf
-
-select claim_no,mline(instring,1),mline(instring,2),mline(instring,3),mline(instring,4),mline(instring,5);
-from editrans;
-where;
-	claim_no > 1251325;
-	and claim_type = "H";
-	and comm_type <> 0;
-into table EDITrans_InBound
-
-select 1
-use
-select 3
-use
-
-delete file EDITrans_OutBound.dbf
-
-select claim_no,mline(outstring,1),mline(outstring,2),mline(outstring,3),mline(outstring,4);
-from editrans;
-where;
-	claim_no > 1251325;
-	and claim_type = "H";
-	and comm_type <> 0;
-into table EDITrans_OutBound
-
-select 1
-use
-select 3
-use
-
-delete file SentEmails.dbf
-
-select Ref_no,Type,Status,Sched_dt,Sent_dt,mline(email,2) + "                              " as to_email,mline(email,4) + "                              " as from_email,id;
-from emailout;
-into table SentEmails
-
-select 1
-use
-select 3
-use
-select 4
-use
-
 delete file API_Trans_SQL.dbf
 
 select;
@@ -235,8 +192,7 @@ select;
 from Api_trans;
 into table API_Trans_SQL
 
-
-clear
+use
 
 ? "***** Start data loads *****"
 
@@ -479,21 +435,6 @@ COPY TO E:\SQL_File_Loads\studinfo_full.txt DELIMITED WITH CHAR "~"
 use
 
 
-delete file E:\SQL_File_Loads\EDItrans_Outbound_full.txt
-? "Start EDITrans_Outbound load"
-use EDITrans_Outbound
-COPY TO E:\SQL_File_Loads\EDITrans_Outbound_full.txt DELIMITED WITH CHAR "~"
-? "Finish EDITrans_Outbound load"
-use
-
-
-delete file E:\SQL_File_Loads\EDItrans_Inbound_full.txt
-? "Start EDITrans_Inbound load"
-use EDITrans_Inbound
-COPY TO E:\SQL_File_Loads\EDITrans_Inbound_full.txt DELIMITED WITH CHAR "~"
-? "Finish EDITrans_Inbound load"
-use
-
 
 delete file E:\SQL_File_Loads\app_claims_full.txt
 ? "Start app_claims load"
@@ -577,12 +518,6 @@ COPY TO E:\SQL_File_Loads\Users_full.txt DELIMITED WITH CHAR "|"
 use
 
 
-delete file E:\SQL_File_Loads\SentEmails_full.txt
-? "Start SentEmails load"
-use SentEmails
-COPY TO E:\SQL_File_Loads\SentEmails_full.txt DELIMITED WITH CHAR "~"
-? "Finished SentEmails load"
-use
 
 delete file E:\SQL_File_Loads\Agency237CommissionSplitData_full.txt
 ? "Start Agency237CommissionSplitData load"
